@@ -1,0 +1,28 @@
+{
+  "name": "aeroapp-d",
+  "version": "1.0.0",
+  "description": "Application for aerobics competition points calculation",
+  "main": "index.js",
+  "scripts": {
+    "test": "node system/test.js --benchmark",
+    "start": "node system/back/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "..."
+  },
+  "keywords": [
+    "..."
+  ],
+  "author": "Adam Borucki",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "electron": "^2.0.1",
+    "jquery": "^3.3.1",
+    "node-rsa": "^1.0.0",
+    "popper": "^1.0.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
+}

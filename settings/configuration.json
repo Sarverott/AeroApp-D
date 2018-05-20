@@ -1,0 +1,9 @@
+{
+  "server":{
+    "ip":"",
+    "port":"",
+    "method":0,
+    "active":false
+  },
+  "mode":
+}
