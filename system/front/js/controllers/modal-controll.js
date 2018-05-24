@@ -1,8 +1,8 @@
 const $ = require("jquery");
 const ipc = require("electron").ipcRender;
 
-const sectionControll = require("./sectionControll.js");
-const modalBuild = require("../builders/modalBuild.js");
+const sectionControll = require("./section-controll.js");
+const modalBuild = require("../builders/modal-build.js");
 
 module.exports = class modalControll extends sectionControll{
   beforeInit(){

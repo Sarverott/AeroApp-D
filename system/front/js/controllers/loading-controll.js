@@ -1,9 +1,9 @@
 const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
 
-const sectionControll=require('./sectionControll.js');
+const sectionControll=require('./section-controll.js');
 
-const mainControll=require('./mainControll.js');
+const mainControll=require('./main-controll.js');
 
 module.exports = class loadingControll extends sectionControll{
   afterInit(){

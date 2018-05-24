@@ -11,7 +11,7 @@ var productKey='7EUCG2N4kB3HD78DmJNjFANWUvMu';
 console.log("MAIN ready")
 $(document).ready(function(){
 	console.log("MAIN ONLOAD ready")
-	var controllMaster=require("../js/core/controllMaster.js");
+	var controllMaster=require("../js/core/controll-master.js");
 	//addListeners();
 });
 ipc.send("set-gui");

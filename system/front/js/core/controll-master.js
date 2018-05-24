@@ -1,9 +1,9 @@
 const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
-const loadingControll = require("../controllers/loadingControll.js")
+const loadingControll = require("../controllers/loading-controll.js")
 console.log("CONTROLL MASTER ready")
 window.controllMaster={
-  loadingControll: new loadingControll("elements/loadingscreen.html", "body")
+  loadingControll: new loadingControll("elements/loading-screen.html", "body")
 }
 /*
 var controllers={};

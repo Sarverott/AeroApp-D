@@ -2,7 +2,7 @@ const {app, BrowserWindow, dialog, ipcMain, shell, Menu, Tray} = require('electr
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
-const sfPack = require("./core/standardFunctions.js")
+const sfPack = require("./core/standard-functions.js")
 
 let win
 function saveProgress(content){

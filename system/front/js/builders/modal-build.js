@@ -1,5 +1,5 @@
 const ipc = require('electron').ipcRenderer;
-const buttonBuild = require('./buttonBuild.js');
+const buttonBuild = require('./button-build.js');
 
 module.exports = class modalBuild{
   constructor(modulePath){
