@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node system/test.js --benchmark",
-    "start": "node system/back/index.js"
+    "start": "electron ./system/back/index.js"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,12 @@
   "author": "Adam Borucki",
   "license": "MIT",
   "dependencies": {
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.0.0-beta.2",
     "electron": "^2.0.1",
-    "jquery": "^3.3.1",
+    "jquery": "^1.9.1",
     "node-rsa": "^1.0.0",
     "popper": "^1.0.1",
+    "popper.js": "^1.12.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2"
   }

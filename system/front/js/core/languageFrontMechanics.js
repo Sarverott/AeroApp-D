@@ -1,6 +1,6 @@
 const ipc = require('electron').ipcRenderer;
 const remote = require('electron').remote;
-const $=require('./plugins/jquery-3.2.1.js');
+const $=require('jquery');
 
 var errorHandle;
 
