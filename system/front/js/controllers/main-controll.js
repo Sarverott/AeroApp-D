@@ -9,9 +9,10 @@ const modalControll=require("./modal-controll.js");
 
 module.exports = class mainControll extends sectionControll{
   afterInit(){
-    window.controllers.push(new modalControll("elements/modal-container.html", "#modals-root"));
-    window.controllers.push(new headerControll("elements/head.html", "#header-root"));
-    window.controllers.push(new cardControll("elements/cards.html", "#cards-root"));
+    var additionRequirement=require("./cards-controllers/main-card-controll.js");
+    window.controllers.modalControll=new modalControll("elements/modal-container.html", "#modals-root");
+    window.controllers.headerControll=new headerControll("elements/head.html", "#header-root");
+    window.controllers.cardControll=new cardControll("elements/cards/main.html", "#cards-root", additionRequirement);
   }
   beforeInit(){
 

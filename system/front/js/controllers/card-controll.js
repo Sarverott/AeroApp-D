@@ -8,7 +8,7 @@ module.exports = class cardControll extends sectionControll{
   afterInit(){
 
   }
-  cardEventListeners(){
-
+  addEventListeners(){
+    
   }
 }

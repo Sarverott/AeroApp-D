@@ -1,9 +1,10 @@
 const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
 module.exports = class sectionControll{
-  constructor(moduleName, selector){
+  constructor(moduleName, selector, aditionalPreparator=false){
     console.log("%c### BEGIN INITIALIZATION %c"+this.constructor.name+"%c ###", 'font-weight: bold;', 'font-weight: bold;color: red', 'font-weight: bold;color: black');
     this.rootSelector=selector;
+    this.aditionalRequirement=aditionalPreparator;
     console.log("%c "+this.constructor.name+">%c selector: "+selector,  'font-weight: bold; color:darkgreen', 'color:black');
     this.modulename=moduleName;
     console.log("%c "+this.constructor.name+">%c module-name: "+moduleName,  'font-weight: bold; color:darkgreen', 'color:black');
@@ -18,11 +19,16 @@ module.exports = class sectionControll{
     this.container=$(this.rootSelector);
     this.container.html(this.content);
     this.afterInit();
+    if(this.aditionalRequirement){this.aditionalRequirement();}
+    this.addEventListeners();
   }
   beforeInit(){
     return null;
   }
   afterInit(){
     return null;
+  }
+  addEventListeners(){
+
   }
 }

@@ -11,7 +11,7 @@ module.exports = class loadingControll extends sectionControll{
   }
   beforeInit(){
     var tmp=function(){
-      window.controllers.push(new mainControll("elements/main.html","body"));
+      window.controllers.mainControll = new mainControll("elements/main.html","body");
     };
     setTimeout(function(){
       tmp();

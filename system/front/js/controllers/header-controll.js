@@ -2,6 +2,7 @@ const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
 
 const sectionControll=require('./section-controll.js');
+const cardControll=require('./card-controll.js')
 
 const buttonBuild = require('../builders/button-build.js');
 
@@ -12,56 +13,56 @@ module.exports = class headerControll extends sectionControll{
       {
         text:"zawody",
         classes:["btn-primary","button-read-card","header-button-item"],
-        cardfile:"main.html",
+        cardfile:"main",
         langtag:"head.buttons.turnament"
       },
       {
         text:"zawodnicy",
-        classes:[],
-        cardfile:"participants.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"participants",
         langtag:"head.buttons.participants"
       },
       {
         text:"trenerzy",
-        classes:[],
-        cardfile:"coaches.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"coaches",
         langtag:"head.buttons.coaches"
       },
       {
         text:"solistki",
-        classes:[],
-        cardfile:"solo_woman.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"solo_woman",
         langtag:"head.buttons.soloistees"
       },
       {
         text:"soliści",
-        classes:[],
-        cardfile:"solo_man.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"solo_man",
         langtag:"head.buttons.solists"
       },
       {
         text:"pary",
-        classes:[],
-        cardfile:"peers.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"peers",
         langtag:"head.buttons.pairs"
       },
       {
         text:"trójki",
-        classes:[],
-        cardfile:"threes.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"threes",
         langtag:"head.buttons.threes"
       },
       {
         text:"klasyfikacja uczelniana",
-        classes:[],
-        cardfile:"universities.html",
+        classes:["btn-primary","button-read-card","header-button-item"],
+        cardfile:"universities",
         langtag:"head.buttons.universities"
       }
     ]);
     tmp+=this.modalButtonBuild.printButtons([
       {
         text:"Ustawienia",
-        classes:[],
+        classes:['header-button-item', "button-modal-open"],
         target:"#settings",
         langtag:"head.buttons.settings"
       }
@@ -70,7 +71,7 @@ module.exports = class headerControll extends sectionControll{
       {
         text:"historia",
         classes:["btn-primary","button-read-card","header-button-item"],
-        cardfile:"logs.html",
+        cardfile:"logs",
         langtag:"head.buttons.history"
       }
     ]);
@@ -102,6 +103,14 @@ module.exports = class headerControll extends sectionControll{
       tmp+=fillObject.text;
       tmp+='</button>';
       return tmp;
+    });
+  }
+  addEventListeners(){
+    var controller=this;
+    $(".button-read-card").off();
+    $(".button-read-card").on("click", function(){
+      var additonalRequirement=require("./cards-controllers/"+$(this).data("readcard")+"-card-controll.js");
+      window.controllers.cardControll=new cardControll("elements/cards/"+$(this).data("readcard")+".html", "#cards-root", additonalRequirement);
     });
   }
 }
