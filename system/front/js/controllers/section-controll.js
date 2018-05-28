@@ -1,21 +1,21 @@
 const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
+
 module.exports = class sectionControll{
   constructor(moduleName, selector, aditionalPreparator=false){
-    console.log("%c### BEGIN INITIALIZATION %c"+this.constructor.name+"%c ###", 'font-weight: bold;', 'font-weight: bold;color: red', 'font-weight: bold;color: black');
+    console.group("BEGIN INITIALIZATION "+this.constructor.name);
     this.rootSelector=selector;
     this.aditionalRequirement=aditionalPreparator;
-    console.log("%c "+this.constructor.name+">%c selector: "+selector,  'font-weight: bold; color:darkgreen', 'color:black');
+    console.log(this.constructor.name+"> selector: "+selector);
     this.modulename=moduleName;
-    console.log("%c "+this.constructor.name+">%c module-name: "+moduleName,  'font-weight: bold; color:darkgreen', 'color:black');
+    console.log(this.constructor.name+"> module-name: "+moduleName);
     this.refresh();
-    console.log("%c### END INITIALIZATION %c"+this.constructor.name+"%c ###", 'font-weight: bold;', 'font-weight: bold;color: red', 'font-weight: bold;color: black');
+    console.groupEnd();
   }
   refresh(){
     this.beforeInit();
     $(this.rootSelector).html("");
     this.content=ipc.sendSync("load-file", "../../front/html/"+this.modulename);
-    console.log("%c "+this.constructor.name+">%c content: "+this.content,  'font-weight: bold; color:darkgreen', 'color:black');
     this.container=$(this.rootSelector);
     this.container.html(this.content);
     this.afterInit();

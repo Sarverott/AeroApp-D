@@ -6,7 +6,6 @@ const ERROR_CODES = {
 	loadFile:3,
 	loadJson:4
 }
-
 var gui;
 
 function loadFile(filePath){
@@ -15,42 +14,41 @@ function loadFile(filePath){
 	}
 	catch(e){
 		sendErrorPrompt(ERROR_CODES.loadFile, {errorData:e});
-		return '';
+		return '<!-- error -->';
 	}
 }
 function sendErrorPrompt(errorCode, detailsObject){
 	switch(errorCode){
     case ERROR_CODES.loadFile:
-
+			raportToGui({title:"loadfile", data:detailsObject});
     break;
     case ERROR_CODES.loadJson:
-
+			raportToGui({title:"loadJson", data:detailsObject});
     break;
   }
 }
 function loadJson(jsonFilePath){
 	var text=loadFile(jsonFilePath);
-	if(text==''){
+	try{
+		var data=JSON.parse(text);
+		return data;
+	}catch(e){
+		sendErrorPrompt(ERROR_CODES.loadJson, {errorData:e});
 		return null;
-	}else{
-		try{
-			var data=JSON.parse(text);
-			return data;
-		}catch(e){
-			sendErrorPrompt(ERROR_CODES.loadJson, {errorData:e});
-			return null;
-		}
 	}
 }
 function useSheme(shemePath, fillObject){
 	var sheme=loadFile(shemePath);
 	for(i in fillObject){
-		sheme=sheme.replace("<!-- "+i+" -->", fillObject[i]);
+		var res = sheme.match(new RegExp("<!-- "+i+" -->","g"));
+    for(var j in res){
+				sheme=sheme.replace("<!-- "+i+" -->", fillObject[i]);
+		}
 	}
 	return sheme;
 }
 function raportToGui(err){
-	event.sender.send("throw-error", err);
+	gui.sender.send("throw-error", err);
 }
 function standardIPCListenersSet(){
   ipcMain.on('portfolio', function (event) {
@@ -63,7 +61,6 @@ function standardIPCListenersSet(){
 			event.returnValue="";
 			raportToGui(e);
 		}
-
 	});
   ipcMain.on('load-json', function(event, requestedPeth){
 		event.returnValue=loadJson(requestedPeth);

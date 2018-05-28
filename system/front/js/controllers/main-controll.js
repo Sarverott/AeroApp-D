@@ -15,6 +15,6 @@ module.exports = class mainControll extends sectionControll{
     window.controllers.cardControll=new cardControll("elements/cards/main.html", "#cards-root", additionRequirement);
   }
   beforeInit(){
-
+    
   }
 }

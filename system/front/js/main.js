@@ -1,20 +1,20 @@
 //### plugins declaration ###//
 const ipc = require('electron').ipcRenderer;
 const remote = require('electron').remote;
-const $=require('jquery')
+const $=require('jquery');
 //###
 window.controllers=[];
 var user='';
 var pass='';
 var server='';
 var productKey='7EUCG2N4kB3HD78DmJNjFANWUvMu';
-console.log("MAIN ready")
+console.log("MAIN ready");
 $(document).ready(function(){
-	console.log("MAIN ONLOAD ready")
+	console.log("MAIN ONLOAD ready");
+	ipc.send("set-gui");
+	loadingSequence();
 	var controllMaster=require("../js/core/controll-master.js");
-	//addListeners();
 });
-ipc.send("set-gui");
 function configServer(){
 
 }

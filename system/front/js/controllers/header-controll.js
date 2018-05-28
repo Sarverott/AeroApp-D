@@ -31,13 +31,13 @@ module.exports = class headerControll extends sectionControll{
       {
         text:"solistki",
         classes:["btn-primary","button-read-card","header-button-item"],
-        cardfile:"solo_woman",
+        cardfile:"solo-woman",
         langtag:"head.buttons.soloistees"
       },
       {
         text:"soliści",
         classes:["btn-primary","button-read-card","header-button-item"],
-        cardfile:"solo_man",
+        cardfile:"solo-man",
         langtag:"head.buttons.solists"
       },
       {
@@ -109,7 +109,7 @@ module.exports = class headerControll extends sectionControll{
     var controller=this;
     $(".button-read-card").off();
     $(".button-read-card").on("click", function(){
-      var additonalRequirement=require("./cards-controllers/"+$(this).data("readcard")+"-card-controll.js");
+      var additonalRequirement=require("../extenders/cards-extenders/"+$(this).data("readcard")+"-card-extender.js");
       window.controllers.cardControll=new cardControll("elements/cards/"+$(this).data("readcard")+".html", "#cards-root", additonalRequirement);
     });
   }

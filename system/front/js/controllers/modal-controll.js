@@ -6,16 +6,18 @@ const modalBuild = require("../builders/modal-build.js");
 
 module.exports = class modalControll extends sectionControll{
   beforeInit(){
-    this.modalBuild = new modalBuild("../../html/templates/modal.html");
+    this.modalBuild = new modalBuild("../../front/html/tempalets/modal.html");
   }
   afterInit(){
-    $("#modal-container").html(this.modalBuild.printModals([
+    console.log(this.container);
+    this.modalBuild.printModals(this.container, [
       {
         id:"error-modal",
         titletext:"wystąpił błąd",
         titlelangtag:"errors.erroroccurred",
         titlesize:4,
-        body:"../../html/elements/modals/error.html",
+        body:"../../front/html/elements/modals/error.html",
+        extender:"../extenders/modals-extenders/error-modal-extender.js",
         buttons:[
           {
             text:"zamknij",
@@ -38,7 +40,8 @@ module.exports = class modalControll extends sectionControll{
         titletext:"informacje",
         titlelangtag:"info.informations",
         titlesize:1,
-        body:"../../html/elements/modals/info.html",
+        body:"../../front/html/elements/modals/info.html",
+        extender:"../extenders/modals-extenders/info-modal-extender.js",
         buttons:[
           {
             text:"ok",
@@ -49,6 +52,6 @@ module.exports = class modalControll extends sectionControll{
           }
         ]
       }
-    ]));
+    ]);
   }
 }

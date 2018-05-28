@@ -16,14 +16,16 @@ module.exports = class modalBuild{
     });
     this.modulePath=modulePath;
   }
-  printModals(fillObjectArray){
-    var tmp="";
+  printModals(container, fillObjectArray){
+    container.html("");
     for(var i in fillObjectArray){
-      var buttonsText="";
       fillObjectArray[i].body=ipc.sendSync("load-file", fillObjectArray[i].body);
       fillObjectArray[i].buttons=this.buttonBuild.printButtons(fillObjectArray[i].buttons);
-      tmp+=ipc.sendSync("use-sheme", this.modulePath, fillObjectArray[i]);
+      var toTmp=ipc.sendSync("use-sheme", this.modulePath, fillObjectArray[i]);
+      //console.log(toTmp);
+      container.append(toTmp);
+      var tmp=require(fillObjectArray[i].extender);
+      tmp(fillObjectArray[i]);
     }
-    return tmp;
   }
 }
