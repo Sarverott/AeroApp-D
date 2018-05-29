@@ -12,28 +12,33 @@ function loadFile(filePath){
 	try{
 		return fs.readFileSync(path.join(__dirname, filePath), 'utf-8');
 	}
-	catch(e){
-		sendErrorPrompt(ERROR_CODES.loadFile, {errorData:e});
+	catch(err){
+		sendErrorPrompt(ERROR_CODES.loadFile, {comment:"file_not_exist",path:fs.readFileSync(path.join(__dirname, filePath), 'utf-8'),details:err});
 		return '<!-- error -->';
 	}
 }
 function sendErrorPrompt(errorCode, detailsObject){
 	switch(errorCode){
     case ERROR_CODES.loadFile:
-			raportToGui({title:"loadfile", data:detailsObject});
+			raportToGui("console-error", {title:"load-file", data:detailsObject});
     break;
     case ERROR_CODES.loadJson:
-			raportToGui({title:"loadJson", data:detailsObject});
+			raportToGui("console-error", {title:"load-json", data:detailsObject});
     break;
   }
 }
 function loadJson(jsonFilePath){
 	var text=loadFile(jsonFilePath);
 	try{
-		var data=JSON.parse(text);
-		return data;
-	}catch(e){
-		sendErrorPrompt(ERROR_CODES.loadJson, {errorData:e});
+		if(text=='<!-- error -->'){
+			sendErrorPrompt(ERROR_CODES.loadJson, {comment:"bypassing_nonexistion", content:"", details:err});
+			return null;
+		}else{
+			var data=JSON.parse(text);
+			return data;
+		}
+	}catch(err){
+		sendErrorPrompt(ERROR_CODES.loadJson, {comment:"non_json_file", content:text, details:err});
 		return null;
 	}
 }
@@ -42,16 +47,23 @@ function useSheme(shemePath, fillObject){
 	for(i in fillObject){
 		var res = sheme.match(new RegExp("<!-- "+i+" -->","g"));
     for(var j in res){
-				sheme=sheme.replace("<!-- "+i+" -->", fillObject[i]);
+			sheme=sheme.replace("<!-- "+i+" -->", fillObject[i]);
 		}
 	}
 	return sheme;
 }
-function raportToGui(err){
-	gui.sender.send("throw-error", err);
+function raportToGui(type, err){
+	switch(type){
+		case "console-error":
+			gui.sender.send("throw-error", err);
+		break;
+		case "console-log":
+			gui.sender.send("", err)
+		break;
+	}
 }
 function standardIPCListenersSet(){
-  ipcMain.on('portfolio', function (event) {
+  ipcMain.on('portfolio', function(event){
   	shell.openExternal("http://sarverott.tumblr.com/rodedown");
   });
 	ipcMain.on('use-sheme', function(event, shemePath, fillObject){

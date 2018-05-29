@@ -1,5 +1,8 @@
 const ipc = require('electron').ipcRenderer;
+
 const buttonBuild = require('./button-build.js');
+
+const fileProcedor = require("../procedors/file-procedor.js");
 
 module.exports = class modalBuild{
   constructor(modulePath){
@@ -19,7 +22,7 @@ module.exports = class modalBuild{
   printModals(container, fillObjectArray){
     container.html("");
     for(var i in fillObjectArray){
-      fillObjectArray[i].body=ipc.sendSync("load-file", fillObjectArray[i].body);
+      fillObjectArray[i].body=fileProcedor.fileRead(fillObjectArray[i].body);
       fillObjectArray[i].buttons=this.buttonBuild.printButtons(fillObjectArray[i].buttons);
       var toTmp=ipc.sendSync("use-sheme", this.modulePath, fillObjectArray[i]);
       //console.log(toTmp);

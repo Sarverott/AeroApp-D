@@ -1,4 +1,3 @@
-const ipc = require('electron').ipcRenderer;
 const $ = require('jquery');
 
 const sectionControll=require('./section-controll.js');
@@ -9,12 +8,12 @@ const modalControll=require("./modal-controll.js");
 
 module.exports = class mainControll extends sectionControll{
   afterInit(){
-    var additionRequirement=require("./cards-controllers/main-card-controll.js");
+    var additionRequirement=require("../extenders/cards-extenders/main-card-extender.js");
     window.controllers.modalControll=new modalControll("elements/modal-container.html", "#modals-root");
     window.controllers.headerControll=new headerControll("elements/head.html", "#header-root");
     window.controllers.cardControll=new cardControll("elements/cards/main.html", "#cards-root", additionRequirement);
   }
   beforeInit(){
-    
+
   }
 }
