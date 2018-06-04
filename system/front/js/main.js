@@ -31,7 +31,8 @@ function loadingSequence(){
 		throw e;
 	});
 }
-function ajaxHELLO(sendData,returnFunct){
+
+/*function ajaxHELLO(sendData,returnFunct){
 	$.ajax({
 		type: 'POST',
 		dataType: 'json',
@@ -82,6 +83,7 @@ function loadReferences(arr){
 		}
 	});
 }
+*/
 /*function initLoad(data){
 	for(a in arr){
 		$('#post-page').append(postViev(a[], a[], a[], a[]));
@@ -105,6 +107,7 @@ function loadReferences(arr){
 		$('#category-page').append(tableGen(a));
 	}
 }*/
+/*
 function tableGen(arr){
 	var ret='<tr>';
 	for(a in arr){
@@ -166,3 +169,4 @@ function loadScreen(sections){
 		$("body").html(icp.sendSync("load-file", "elements/"+sections+".html"));
 	}
 }
+*/

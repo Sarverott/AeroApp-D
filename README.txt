@@ -28,6 +28,7 @@
     1.4. loading screen
   2. CSS stylization
   3. JavaScript mechanics
+    3.1. 
   4. pre-release testing
   5. Debuging
   6. Release
