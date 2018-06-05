@@ -1,3 +1,9 @@
+const coach=require("../builders/data-builders/coach-class.js");
+const person=require("../builders/data-builders/person-class.js");
+const judge=require("../builders/data-builders/judge-class.js");
+
+const university=require("../builders/data-builders/university-class.js");
+
 module.exports=class tournamentControll{
   constructor(judgeTypes){
     this.judgeTypes=judgeTypes;
@@ -18,6 +24,7 @@ module.exports=class tournamentControll{
     return branNewPerson;
   }
   addJudge(firstname, lastname, type){
-    this.judges.push(new judge(addPerson(firstname, lastname)));
+    jsonProcedor.jsonRead()
+    this.judges.push(new judge(addPerson(firstname, lastname), type));
   }
 }
