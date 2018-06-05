@@ -28,14 +28,14 @@
     1.4. loading screen
   2. CSS stylization
   3. JavaScript mechanics
-    3.1. 
+    3.1.
   4. pre-release testing
   5. Debuging
   6. Release
   7. post-release collecting data from users
 PSEUDOCODE:
   1. dashboard
-    1.1 header
+    1.1 header6
       1.1.1 create skeleton
       1.1.2 add stylization of dashboard look
       1.1.3 buttons of sections, after click leading to section

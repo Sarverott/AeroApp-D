@@ -3,7 +3,7 @@ module.exports=class university{
     this.address=address;
     this.name=name;
     this.participants=[];
-    this.coatches=[];
+    //this.coaches=[];
     this.teams=[];
   }
   addStudent(participantObject){
@@ -20,20 +20,20 @@ module.exports=class university{
       return false;
     }
   }
-  addCoatch(coatchObject){
+  /*addCoach(coatchObject){
     var tmpFlag=true;
-    for(var i in this.coatches){
-      if(coatchObject===this.coatches[i]){
+    for(var i in this.coaches){
+      if(coatchObject===this.coaches[i]){
         tmpFlag=false;
       }
     }
     if(tmpFlag){
-      this.coatches.push(coatchObject);
+      this.coaches.push(coatchObject);
       return true;
     }else{
       return false;
     }
-  }
+  }*/
   addTeam(teamObject){
     var tmpFlag=true;
     for(var i in this.teams){
@@ -48,7 +48,7 @@ module.exports=class university{
       return false;
     }
   }
-  deleteCoach(hookVar){
+  /*deleteCoach(hookVar){
     switch(typeof(hookVar)){
       case "number":
         this.coaches.splice(hookVar, 1);
@@ -57,12 +57,12 @@ module.exports=class university{
         for(var i in this.coaches){
           if(hookVar===this.coaches[i]){
             this.coaches.splice(i, 1);
-            break
+            break;
           }
         }
       break;
     }
-  }
+  }*/
   deleteTeam(hookVar){
     switch(typeof(hookVar)){
       case "number":
@@ -72,7 +72,7 @@ module.exports=class university{
         for(var i in this.teams){
           if(hookVar===this.teams[i]){
             this.teams.splice(i, 1);
-            break
+            break;
           }
         }
       break;
@@ -87,7 +87,7 @@ module.exports=class university{
         for(var i in this.participants){
           if(hookVar===this.participants[i]){
             this.participants.splice(i, 1);
-            break
+            break;
           }
         }
       break;

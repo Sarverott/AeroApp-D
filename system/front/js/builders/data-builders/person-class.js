@@ -1,9 +1,10 @@
-class person{
-  constructor(){
-
+module.exports=class person{
+  constructor(firstname, lastname){
+    setNames(firstname, lastname);
+    setBasics();
   }
-  setBasics(id){
-    this.personId=id;
+  setBasics(){
+    //this.personId=id;
     var tmpDate=new Date();
     var tmp=tmpDate.now();
     this.created=tmp;
