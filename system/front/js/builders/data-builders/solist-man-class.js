@@ -1,13 +1,13 @@
 const participantTeam=require("./team-class.js");
 
-module.exports=class pairTeam extends participantTeam{
+module.exports=class solistManTeam extends participantTeam{
   setType(){
-    return "pair";
+    return "solo-man";
   }
   teamRequirements(){
     return {
-      count:2,
-      gender:["M", "F"]
+      count:1,
+      gender:"M"
     }
   }
 }

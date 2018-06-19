@@ -1,6 +1,7 @@
 module.exports=class person{
-  constructor(firstname, lastname){
+  constructor(firstname, lastname, gender){
     setNames(firstname, lastname);
+    setGender(gender);
     setBasics();
   }
   setBasics(){
@@ -14,6 +15,9 @@ module.exports=class person{
     var tmpDate=new Date();
     var tmp=tmpDate.now();
     this.updated=tmp;
+  }
+  setGender(gender){
+    this.gender=gender;
   }
   setNames(firstname, lastname){
     this.names={};

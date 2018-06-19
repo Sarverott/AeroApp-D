@@ -4,7 +4,7 @@ module.exports=class judge{
     this.type=type;
     this.typeCode=code;
   }
-  getTypeId(){
+  getTypeCode(){
     return this.typeCode;
   }
   
